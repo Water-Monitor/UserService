@@ -17,7 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import watermonitor.userservice.models.AuthenticationConfigConstants;
+import watermonitor.userservice.configuration.AuthenticationConfigConstants;
 import watermonitor.userservice.models.dao.UserDao;
 
 @RequiredArgsConstructor

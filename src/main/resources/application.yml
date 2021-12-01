@@ -10,6 +10,8 @@ management:
         include: health,info,metrics,prometheus
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   jpa:
     properties:
       hibernate:

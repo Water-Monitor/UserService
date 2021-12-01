@@ -6,7 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import watermonitor.userservice.models.AuthenticationConfigConstants;
+import watermonitor.userservice.configuration.AuthenticationConfigConstants;
 
 import java.io.IOException;
 import java.util.ArrayList;

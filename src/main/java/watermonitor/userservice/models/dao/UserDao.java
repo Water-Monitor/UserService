@@ -1,6 +1,11 @@
 package watermonitor.userservice.models.dao;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
-import java.util.Set;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity(name = "wm_user")
 @Getter
@@ -23,23 +30,27 @@ public class UserDao implements Dao {
     @NonNull
     private long id;
     @NonNull
-    @Column(length=50)
+    @Column
+    @Size(min = 8, max = 200)
     private String name;
     @NonNull
-    @Column(length=50)
+    @Column
+    @Size(min = 8, max = 200)
     private String username;
     @NonNull
+    @Size(min = 8, max = 200)
     private String password;
     @Transient
+    @Size(min = 8, max = 200)
     private String passwordConfirm;
     @ManyToMany
-    private Set<RoleDao> roles;
+    private List<RoleDao> roles;
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setRoles(Set<RoleDao> roles) {
+    public void setRoles(List<RoleDao> roles) {
         this.roles = roles;
     }
 }

@@ -9,8 +9,7 @@ import watermonitor.userservice.models.dto.send_out.Greeting;
 @RequestMapping("/")
 public class GreetingController {
     @GetMapping("greeting")
-    public Greeting testConnection()
-    {
+    public Greeting testConnection() {
         return new Greeting("UserService", "You are connected and received this response");
     }
 }
