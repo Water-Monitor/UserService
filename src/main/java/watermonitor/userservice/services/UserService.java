@@ -28,11 +28,12 @@ public class UserService {
         return userRepository.findByUsername(username).orElseThrow(EntityNotFoundException::new);
     }
     public void createUser(CreateUserDto userCreateRequest) {
-        UserDao user = new UserDao();
         Optional<UserDao> byUsername = userRepository.findByUsername(userCreateRequest.getUsername());
         if (byUsername.isPresent()) {
             throw new RuntimeException("User already registered. Please use different username.");
         }
+
+        UserDao user = new UserDao();
         user.setName(userCreateRequest.getName());
         user.setUsername(userCreateRequest.getUsername());
         user.setPassword(passwordEncoder.encode(userCreateRequest.getPassword()));
