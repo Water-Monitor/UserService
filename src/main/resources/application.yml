@@ -21,7 +21,8 @@ spring:
 
   ### Azure Database connection
   datasource:
-    url: jdbc:postgresql://ec2-52-31-219-113.eu-west-1.compute.amazonaws.com:5432/d839f9utocukpj?sslmode=require&user=leedcsdusxkjwu&password=1c45b5556b69823e703b00c1a19865f512b253ec4f36bf00585158fcc0003e60
+    url: jdbc:postgresql://41.193.5.155:23001/watermonitor?sslmode=require&user=postgres&password=postgres
+#  url: jdbc:postgresql://ec2-52-31-219-113.eu-west-1.compute.amazonaws.com:5432/d839f9utocukpj?sslmode=require&user=leedcsdusxkjwu&password=1c45b5556b69823e703b00c1a19865f512b253ec4f36bf00585158fcc0003e60
 
 #    url: jdbc:postgresql://db-parcel-manage-b.postgres.database.azure.com/postgres?sslmode=require
 #    username: db_parcel_manage@db-parcel-manage-b
