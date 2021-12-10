@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import watermonitor.userservice.models.dto.Response;
 import watermonitor.userservice.models.dto.send_in.CreateUserDto;
 import watermonitor.userservice.models.dto.send_out.UserDto;
 import watermonitor.userservice.services.UserService;
@@ -23,8 +24,15 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity createUser(@RequestBody CreateUserDto userCreateRequest) {
-        userService.createUser(userCreateRequest);
-        return ResponseEntity.ok().build();
+        UserDto user = userService.createUser(userCreateRequest);
+
+        if (user == null) {
+            log.info("failed");
+            return ResponseEntity.badRequest().build();
+        }
+
+        log.info("user created with name: " + user.getName());
+        return ResponseEntity.ok().body(user);
     }
 
     @GetMapping("")
@@ -35,6 +43,7 @@ public class UserController {
             return ResponseEntity.badRequest().build();
         }
 
-        return ResponseEntity.ok(loggedInUser);
+        Response wrapper = Response.builder().data(loggedInUser.get()).build();
+        return ResponseEntity.ok(wrapper);
     }
 }

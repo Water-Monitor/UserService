@@ -27,7 +27,7 @@ public class UserService {
     public UserDao readUserByUsername (String username) {
         return userRepository.findByUsername(username).orElseThrow(EntityNotFoundException::new);
     }
-    public void createUser(CreateUserDto userCreateRequest) {
+    public UserDto createUser(CreateUserDto userCreateRequest) {
         Optional<UserDao> byUsername = userRepository.findByUsername(userCreateRequest.getUsername());
         if (byUsername.isPresent()) {
             throw new RuntimeException("User already registered. Please use different username.");
@@ -39,7 +39,9 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(userCreateRequest.getPassword()));
         user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
 
-        userRepository.save(user);
+        UserDao savedUser = userRepository.save(user);
+
+        return UserMapper.INSTANCE.map(savedUser);
     }
 
     public Optional<UserDto> getLoggedInUser() {

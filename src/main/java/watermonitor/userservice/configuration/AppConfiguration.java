@@ -2,7 +2,6 @@ package watermonitor.userservice.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
@@ -15,8 +14,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
-import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import watermonitor.userservice.services.AuthenticationUserDetailService;
 import watermonitor.userservice.services.JWTAuthenticationFilter;
 import watermonitor.userservice.services.JWTAuthorizationFilter;
